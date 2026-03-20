@@ -6,7 +6,7 @@
 /*   By: namatias <namatias@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 14:14:19 by namatias          #+#    #+#             */
-/*   Updated: 2026/03/20 14:16:30 by namatias         ###   ########.fr       */
+/*   Updated: 2026/03/20 16:17:32 by namatias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ typedef struct	s_info
 } t_info;
 
 long long	current_time(void);
+int			check_args_number(int argc);
 long long	exec_time(long long time_start);
+int			arg_is_valid(char **argv, int argc);
 
 #endif
