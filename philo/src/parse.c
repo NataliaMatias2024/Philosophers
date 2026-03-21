@@ -6,7 +6,7 @@
 /*   By: namatias <namatias@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/20 14:21:37 by namatias          #+#    #+#             */
-/*   Updated: 2026/03/20 16:41:42 by namatias         ###   ########.fr       */
+/*   Updated: 2026/03/21 17:38:28 by namatias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ static int	is_all_valid_numb(char *argv)
 	int		i;
 
 	i = 0;
+	numb = 0;
 	while ((argv[i] >= 9 && argv[i] <= 13) || argv[i] == 32) //verifica espaço em branco (man isspace)
 		i++;
 	if (argv[i] == '+') //verificamos se tem sinal, só iremos aceitar 1 sinal positivo
@@ -50,6 +51,23 @@ static int	is_all_valid_numb(char *argv)
 		return (0); //nesse programa numeros negativos nao sao aceitos, por tanto encerra exec
 	while (argv[i] >= '0' && argv[i] <= '9') //enquanto for digito convertemos
 	{
-		
+		numb = numb * 10 + (argv[i] - '0'); //*10 abre espaço pra prox casa decimal
+		i++;
 	}
+	if (argv[i] != '\0' || numb > 2147483647) //se for maior q o numero max de int, tbm n é valido
+		return (0); //ou se acabou antes do final da string, encerramos o programa. pois n é string valida
+	return (numb);
+}
+
+void	init_structs(t_info *info, char **argv) //preenche nossa struct com as variaveis recebidas no imput
+{
+	info->numb_of_philo = is_all_valid_numb(argv[1]);
+	info->time_to_die = is_all_valid_numb(argv[2]);
+	info->time_to_eat = is_all_valid_numb(argv[3]);
+	info->time_to_sleep = is_all_valid_numb(argv[4]);
+	if (argv[5])
+		info->numb_of_meals = is_all_valid_numb(argv[5]);
+	else
+		info->numb_of_meals = -1; //caso o usuário nao digite nada nesse campo o -1 nos permite saber que esse campo realmente nao foi preenchido,
+								 // uma vez q usuario pode digitar 0
 }

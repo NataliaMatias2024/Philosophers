@@ -6,7 +6,7 @@
 /*   By: namatias <namatias@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/20 11:21:44 by namatias          #+#    #+#             */
-/*   Updated: 2026/03/20 14:31:26 by namatias         ###   ########.fr       */
+/*   Updated: 2026/03/21 11:34:39 by namatias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ long long	current_time(void)
 	long long		time_current;
 
 	gettimeofday(&tv, NULL);
-
 	time_current = tv.tv_sec * 1000 + tv.tv_usec / 1000;
 	return (time_current);
 }
