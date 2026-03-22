@@ -6,7 +6,7 @@
 /*   By: namatias <namatias@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 14:14:19 by namatias          #+#    #+#             */
-/*   Updated: 2026/03/21 23:27:29 by namatias         ###   ########.fr       */
+/*   Updated: 2026/03/22 15:24:59 by namatias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef struct s_philo
 	pthread_t		thread_id; //cria a thread nova. Cada filosofo é uma thread
 	long			id;		// identifica o filosofo que está fazendo a açao
 	long			meals;    //ao atingir para o programa
-	long long		last_meal; //guardar o tempo da ultima refeiçao (unica forma d morrer)
+	long long		last_meal_time; //guardar o tempo da ultima refeiçao (unica forma d morrer)
 	long			is_dead; //flag que irá nos indicar se o filosofo morreu ou n
 	struct s_info	*info; //informaçoes extras de acordo com o imput e init
 
@@ -60,6 +60,13 @@ int			check_args_number(int argc);
 int			is_all_valid_numb(char *argv);
 long long	exec_time(long long time_start);
 int			arg_is_valid(char **argv, int argc);
-void		init_struct_info(t_info *info, char **argv);
+
+
+void	init_mutex_info(t_info *info);
+void	init_forks_array(t_info *info);
+void	init_struct_philo(t_info *info);
+void	init_struct_info(t_info *info, char **argv);
+
+void	mutex_destroy(t_info *info, int where, int limit);
 
 #endif

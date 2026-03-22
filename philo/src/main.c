@@ -6,7 +6,7 @@
 /*   By: namatias <namatias@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/20 11:26:22 by namatias          #+#    #+#             */
-/*   Updated: 2026/03/21 21:59:07 by namatias         ###   ########.fr       */
+/*   Updated: 2026/03/22 15:35:07 by namatias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int	main(int argc, char **argv)
 	{
 		init_struct_info(&info, argv);
 		print_struct_teste(&info);
+		mutex_destroy(&info, 1, info.numb_of_philo);
 		// time_current = 0;
 		// time_start = current_time();
 		// while(time_current < 10)
