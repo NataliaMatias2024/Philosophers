@@ -6,7 +6,7 @@
 #    By: namatias <namatias@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/03/20 11:29:54 by namatias          #+#    #+#              #
-#    Updated: 2026/03/20 14:36:52 by namatias         ###   ########.fr        #
+#    Updated: 2026/03/21 21:58:34 by namatias         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,8 @@ INCLUDE_DIR = 	./include/
 
 SRC_FILES = main.c \
 			time.c \
-			parse.c
+			parse.c \
+			init.c   
 
 FILES_O = $(SRC_FILES:.c=.o)
 
