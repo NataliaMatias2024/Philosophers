@@ -6,7 +6,7 @@
 /*   By: namatias <namatias@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/20 14:21:37 by namatias          #+#    #+#             */
-/*   Updated: 2026/03/21 23:27:38 by namatias         ###   ########.fr       */
+/*   Updated: 2026/03/22 15:21:42 by namatias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	arg_is_valid(char **argv, int argc)
 	i = 1;
 	while (argv[i] && i < argc)
 	{
-		if (!is_all_valid_numb(argv[i]) || is_all_valid_numb(argv[i]) <= 0 || is_all_valid_numb(argv[1]) >= MAX_PHILOS)
+		if (is_all_valid_numb(argv[i]) <= 0 || is_all_valid_numb(argv[1]) >= MAX_PHILOS)
 		{
 			printf("Error: %s -> ", argv[i]);
 			if (i == 1)
@@ -65,8 +65,8 @@ int	is_all_valid_numb(char *argv)
 		numb = numb * 10 + (argv[i] - '0'); //*10 abre espaço pra prox casa decimal
 		i++;
 	}
-	if (argv[i] != '\0' || numb > 2147483647) //se for maior q o numero max de int, tbm n é valido
-		return (0); //ou se acabou antes do final da string, encerramos o programa. pois n é string valida
+	if (argv[i] != '\0' || numb > 2147483647) //se for maior q o numero max de int, ou se acabou antes de chegar ao
+		return (0); 							//final da string, encerramos o programa. pois n é string valida
 	return (numb);
 }
 
