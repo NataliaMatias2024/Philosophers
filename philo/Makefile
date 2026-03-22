@@ -6,7 +6,7 @@
 #    By: namatias <namatias@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/03/20 11:29:54 by namatias          #+#    #+#              #
-#    Updated: 2026/03/22 15:15:45 by namatias         ###   ########.fr        #
+#    Updated: 2026/03/22 16:05:45 by namatias         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@
 NAME = philo
 
 CC = cc
-CFLAGS = -Wall -Wextra -Wall -g3
+CFLAGS = -Wall -Wextra -Werror -g3 #TODO: retirar o -g3 antes d enviar
 
 SRC_DIR = 		./src/
 OBJ_DIR = 		./obj/
@@ -34,6 +34,8 @@ FILES_O = $(SRC_FILES:.c=.o)
 OBJS = $(addprefix $(OBJ_DIR), $(FILES_O))
 SRCS = $(addprefix $(SRC_DIR), $(SRC_FILES))
 
+ARGS = 5 800 200 200 #Para compilar com a regra make val para projetos q devem receber argumentos pelo terminal
+                     #Esses valores sao substituidos ao se chamar make val ARG="1 200 200 200 200" por exemplo
 ################################################################################
 #                   	          LIBRARIES        		                       #
 ################################################################################
@@ -74,7 +76,12 @@ fclean: clean
 
 re: fclean all
 
+# Para ver vazamentos de memória (Leaks)
 val: all
-	valgrind -q --leak-check=full --show-leak-kinds=all --track-origins=yes --track-fds=yes ./$(NAME)
+	valgrind -q --leak-check=full --show-leak-kinds=all ./$(NAME) $(ARGS)
+
+# Para ver problemas de Threads e Data Races
+hel: all
+	valgrind -q --tool=helgrind ./$(NAME) $(ARGS)
 
 .PHONY: all clean fclean re val
