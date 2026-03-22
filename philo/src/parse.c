@@ -6,13 +6,11 @@
 /*   By: namatias <namatias@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/20 14:21:37 by namatias          #+#    #+#             */
-/*   Updated: 2026/03/21 21:45:42 by namatias         ###   ########.fr       */
+/*   Updated: 2026/03/21 23:27:38 by namatias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-
-static int	is_all_valid_numb(char *argv);
 
 int	check_args_number(int argc)
 {
@@ -49,7 +47,7 @@ int	arg_is_valid(char **argv, int argc)
 	return (1);
 }
 
-static int	is_all_valid_numb(char *argv)
+int	is_all_valid_numb(char *argv)
 {
 	long	numb;
 	int		i;
@@ -72,16 +70,5 @@ static int	is_all_valid_numb(char *argv)
 	return (numb);
 }
 
-void	init_structs(t_info *info, char **argv) //preenche nossa struct com as variaveis recebidas no imput
-{
-	info->numb_of_philo = is_all_valid_numb(argv[1]);
-	info->time_to_die = is_all_valid_numb(argv[2]);
-	info->time_to_eat = is_all_valid_numb(argv[3]);
-	info->time_to_sleep = is_all_valid_numb(argv[4]);
-	if (argv[5])
-		info->numb_of_meals = is_all_valid_numb(argv[5]);
-	else
-		info->numb_of_meals = -1; //caso o usuário nao digite nada nesse campo o -1 nos permite saber que esse campo realmente nao foi preenchido,
-								 // uma vez q usuario pode digitar 0
-}
+
 
