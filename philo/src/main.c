@@ -6,7 +6,7 @@
 /*   By: namatias <namatias@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/20 11:26:22 by namatias          #+#    #+#             */
-/*   Updated: 2026/03/21 17:38:29 by namatias         ###   ########.fr       */
+/*   Updated: 2026/03/21 21:59:07 by namatias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,11 @@ int	main(int argc, char **argv)
 	// long long	time_current;
 	t_info info;
 
-	if (check_args_number(argc) && arg_is_valid(argv, argc))
+	if (!check_args_number(argc))
+		printf("Error: Wrong number of argument.\n");
+	else if (arg_is_valid(argv, argc))
 	{
-		init_structs(&info, argv);
+		init_struct_info(&info, argv);
 		print_struct_teste(&info);
 		// time_current = 0;
 		// time_start = current_time();
@@ -33,8 +35,6 @@ int	main(int argc, char **argv)
 		// 	usleep(700);
 		// }
 	}
-	else
-		write(STDERR_FILENO, "Error\n", 7);
 	return (0);
 }
 

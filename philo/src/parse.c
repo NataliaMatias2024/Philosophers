@@ -6,7 +6,7 @@
 /*   By: namatias <namatias@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/20 14:21:37 by namatias          #+#    #+#             */
-/*   Updated: 2026/03/21 17:38:28 by namatias         ###   ########.fr       */
+/*   Updated: 2026/03/21 21:45:42 by namatias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,21 @@ int	arg_is_valid(char **argv, int argc)
 	i = 1;
 	while (argv[i] && i < argc)
 	{
-		if (!is_all_valid_numb(argv[i]))
+		if (!is_all_valid_numb(argv[i]) || is_all_valid_numb(argv[i]) <= 0 || is_all_valid_numb(argv[1]) >= MAX_PHILOS)
+		{
+			printf("Error: %s -> ", argv[i]);
+			if (i == 1)
+				printf("The number of philosophers must be a int between 0 and 200.\n");
+			else if (i == 2)
+				printf("Time_to_die must be a int = 1 or more.\n");
+			else if (i == 3)
+				printf("Time_to_eat must be a int = 1 or more.\n");
+			else if (i == 4)
+				printf("Time_to_sleep must be a int = 1 or more.\n");
+			else if (i == 5)
+				printf("The number of meals needs to be a int and at least 1.\n");
 			return (0);
+		}
 		i++;
 	}
 	return (1);
@@ -71,3 +84,4 @@ void	init_structs(t_info *info, char **argv) //preenche nossa struct com as vari
 		info->numb_of_meals = -1; //caso o usuário nao digite nada nesse campo o -1 nos permite saber que esse campo realmente nao foi preenchido,
 								 // uma vez q usuario pode digitar 0
 }
+
