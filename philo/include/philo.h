@@ -6,7 +6,7 @@
 /*   By: namatias <namatias@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 14:14:19 by namatias          #+#    #+#             */
-/*   Updated: 2026/03/23 02:26:30 by namatias         ###   ########.fr       */
+/*   Updated: 2026/03/23 16:29:35 by namatias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,11 @@ typedef struct	s_info
 
 long long	current_time(void);
 long long	exec_time(long long time_start);
+void		custom_usleep(long long time_to_wait, t_info *info);
 
+void		arg_error(void);
+int			is_valid(char *argv);
 int			check_args_number(int argc);
-int			is_all_valid_numb(char *argv);
 int			arg_is_valid(char **argv, int argc);
 
 void		init_mutex_info(t_info *info);
