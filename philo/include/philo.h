@@ -6,7 +6,7 @@
 /*   By: namatias <namatias@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 14:14:19 by namatias          #+#    #+#             */
-/*   Updated: 2026/03/22 15:24:59 by namatias         ###   ########.fr       */
+/*   Updated: 2026/03/23 02:26:30 by namatias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,11 @@
 # include <sys/time.h>
 
 # define MAX_PHILOS 200
+# define RESET "\033[0m"
+# define RED "\033[0;31m"
+# define GREEN "\033[0;32m"
+# define BLUE "\033[0;34m"
+# define GRAY "\033[1;37m"
 
 typedef struct s_philo
 {
@@ -56,17 +61,21 @@ typedef struct	s_info
 } t_info;
 
 long long	current_time(void);
+long long	exec_time(long long time_start);
+
 int			check_args_number(int argc);
 int			is_all_valid_numb(char *argv);
-long long	exec_time(long long time_start);
 int			arg_is_valid(char **argv, int argc);
 
+void		init_mutex_info(t_info *info);
+void		init_forks_array(t_info *info);
+void		init_struct_philo(t_info *info);
+void		init_struct_info(t_info *info, char **argv);
 
-void	init_mutex_info(t_info *info);
-void	init_forks_array(t_info *info);
-void	init_struct_philo(t_info *info);
-void	init_struct_info(t_info *info, char **argv);
+void		mutex_destroy(t_info *info, int where, int limit);
 
-void	mutex_destroy(t_info *info, int where, int limit);
+void		*routine(void *arg);
+long		keep_running(t_info *info);
+void		print_action(t_philo *philo, int action);
 
 #endif

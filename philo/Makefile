@@ -6,7 +6,7 @@
 #    By: namatias <namatias@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/03/20 11:29:54 by namatias          #+#    #+#              #
-#    Updated: 2026/03/22 16:05:45 by namatias         ###   ########.fr        #
+#    Updated: 2026/03/23 02:27:35 by namatias         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,9 @@ SRC_FILES = main.c \
 			time.c \
 			parse.c \
 			init.c \
-			clean.c   
+			clean.c  \
+			routine.c \
+			utils.c  
 
 FILES_O = $(SRC_FILES:.c=.o)
 
