@@ -6,7 +6,7 @@
 /*   By: namatias <namatias@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/20 14:21:37 by namatias          #+#    #+#             */
-/*   Updated: 2026/03/22 15:21:42 by namatias         ###   ########.fr       */
+/*   Updated: 2026/03/23 12:18:57 by namatias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,11 @@ int	arg_is_valid(char **argv, int argc)
 	i = 1;
 	while (argv[i] && i < argc)
 	{
-		if (is_all_valid_numb(argv[i]) <= 0 || is_all_valid_numb(argv[1]) >= MAX_PHILOS)
+		if (is_valid(argv[i]) <= 0 || is_valid(argv[1]) >= MAX_PHILOS)
 		{
 			printf("Error: %s -> ", argv[i]);
 			if (i == 1)
-				printf("The number of philosophers must be a int between 0 and 200.\n");
+				printf("The number of philos must be between 0 and 200.\n");
 			else if (i == 2)
 				printf("Time_to_die must be a int = 1 or more.\n");
 			else if (i == 3)
@@ -39,7 +39,7 @@ int	arg_is_valid(char **argv, int argc)
 			else if (i == 4)
 				printf("Time_to_sleep must be a int = 1 or more.\n");
 			else if (i == 5)
-				printf("The number of meals needs to be a int and at least 1.\n");
+				printf("The number of meals needs to be at least 1.\n");
 			return (0);
 		}
 		i++;
@@ -47,7 +47,7 @@ int	arg_is_valid(char **argv, int argc)
 	return (1);
 }
 
-int	is_all_valid_numb(char *argv)
+int	is_valid(char *argv)
 {
 	long	numb;
 	int		i;
@@ -70,5 +70,12 @@ int	is_all_valid_numb(char *argv)
 	return (numb);
 }
 
-
-
+void	arg_error(void)
+{
+	printf("Please enter 4 or 5 arguments\n");
+	printf("1. Number of philosophers\n");
+	printf("2. Time to die\n");
+	printf("3. Time to eat\n");
+	printf("4. Time to sleep\n");
+	printf("5. Number of times each philo must eat (optional)\n");
+}
