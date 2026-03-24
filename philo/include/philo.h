@@ -6,7 +6,7 @@
 /*   By: namatias <namatias@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 14:14:19 by namatias          #+#    #+#             */
-/*   Updated: 2026/03/23 16:29:35 by namatias         ###   ########.fr       */
+/*   Updated: 2026/03/23 20:56:44 by namatias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,5 +79,8 @@ void		mutex_destroy(t_info *info, int where, int limit);
 void		*routine(void *arg);
 long		keep_running(t_info *info);
 void		print_action(t_philo *philo, int action);
+
+void		threads_philo_create(t_info *info);
+void		thread_wait(t_info *info, int error_i);
 
 #endif

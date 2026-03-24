@@ -6,7 +6,7 @@
 /*   By: namatias <namatias@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/20 11:26:22 by namatias          #+#    #+#             */
-/*   Updated: 2026/03/23 16:29:31 by namatias         ###   ########.fr       */
+/*   Updated: 2026/03/23 20:56:38 by namatias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int	main(int argc, char **argv)
 	else if (arg_is_valid(argv, argc))
 	{
 		init_struct_info(&info, argv);
+		threads_philo_create(&info);
+		thread_wait(&info, info.numb_of_philo);
 		print_struct_teste(&info);
 		mutex_destroy(&info, 1, info.numb_of_philo);
 	}
