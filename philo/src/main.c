@@ -6,7 +6,7 @@
 /*   By: namatias <namatias@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/20 11:26:22 by namatias          #+#    #+#             */
-/*   Updated: 2026/03/24 00:56:53 by namatias         ###   ########.fr       */
+/*   Updated: 2026/03/24 17:06:12 by namatias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,7 @@ int	main(int argc, char **argv)
 	t_info info;
 
 	if (!check_args_number(argc))
-	{
 		arg_error();
-		return (1);
-	}
 	else if (arg_is_valid(argv, argc))
 	{
 		init_struct_info(&info, argv);
@@ -30,11 +27,11 @@ int	main(int argc, char **argv)
 		monitoring_routine(&info);
 		thread_wait(&info, info.numb_of_philo);
 		mutex_destroy(&info, 1, info.numb_of_philo);
-		print_struct_teste(&info);
+		//print_struct_teste(&info);
+		return (0);
 	}
-	return (0);
-}
-
+	return (1);
+} 
 
 void print_struct_teste(t_info *info)
 {

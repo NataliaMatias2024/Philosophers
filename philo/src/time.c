@@ -6,7 +6,7 @@
 /*   By: namatias <namatias@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/20 11:21:44 by namatias          #+#    #+#             */
-/*   Updated: 2026/03/23 16:29:33 by namatias         ###   ########.fr       */
+/*   Updated: 2026/03/24 16:05:32 by namatias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,6 @@ void	custom_usleep(long long time_to_wait, t_info *info)
 	{
 		if (keep_running(info))
 			return ;
-		usleep(500); //lembrar!! aqui está em MICROSSEGUNDO e nao em MS		
+		usleep(100); //lembrar!! aqui está em MICROSSEGUNDO e nao em MS		
 	}
 }

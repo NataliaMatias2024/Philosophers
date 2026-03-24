@@ -6,7 +6,7 @@
 /*   By: namatias <namatias@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/20 14:21:37 by namatias          #+#    #+#             */
-/*   Updated: 2026/03/24 14:17:09 by namatias         ###   ########.fr       */
+/*   Updated: 2026/03/24 17:10:22 by namatias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	arg_is_valid(char **argv, int argc)
 	i = 1;
 	while (argv[i] && i < argc)
 	{
-		if (is_valid(argv[i]) <= 0 || (i == 1 && is_valid(argv[1]) >= MAX_PHILOS))
+		if (is_valid(argv[i]) <= 0 || (i == 1 && is_valid(argv[1]) > MAX_PHILOS))
 		{
 			printf("Error: Invalid Arguments\n");
 			if (i == 1)

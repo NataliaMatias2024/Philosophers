@@ -6,7 +6,7 @@
 /*   By: namatias <namatias@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/22 20:23:52 by namatias          #+#    #+#             */
-/*   Updated: 2026/03/24 00:56:58 by namatias         ###   ########.fr       */
+/*   Updated: 2026/03/24 16:50:13 by namatias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,19 @@ void	*routine(void *arg)
 	if (philo->info->numb_of_philo == 1)
 	{
 		print_action(philo, 1);
-		usleep(philo->info->time_to_die);
+		usleep(philo->info->time_to_die * 1000);
 		return (NULL);
 	}
+	if (philo->id % 2 == 0)   //dessincronizaçao inicial, filosos pares aguardam os impares iniciar a açao
+		usleep(50);
 	while (keep_running(philo->info) == 0) //enquanto ninguem morrer nem atingir o numero minimo de refeições 
 	{									  //n podemos comparar o info->stop direto com o zero pois
 								        //temos q protege-lo de data race, por isso usamos uma funçao auxiliar
-		thinking(philo);
 		take_a_fork(philo);
 		eating(philo);
 		sleeping(philo);
+		thinking(philo);
+
 	}
 	return (NULL); //encerrando o looping se encerra o programa.
 }
@@ -44,8 +47,8 @@ static void	thinking(t_philo *philo)
 	if (keep_running(philo->info) == 0)
 	{
 		print_action(philo, 4);
-		custom_usleep(5, philo->info); //esse mini delay ajuda as threads a n sincronizarem ao decorrer da simulaçao
-									//consequentemente nunca chegarao juntas na mesa, nem morrerao de inaniçao
+		if (philo->info->numb_of_philo % 2 != 0)
+			usleep(1000);
 	}
 }
 

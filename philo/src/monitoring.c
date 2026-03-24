@@ -6,7 +6,7 @@
 /*   By: namatias <namatias@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/23 22:06:23 by namatias          #+#    #+#             */
-/*   Updated: 2026/03/24 00:56:56 by namatias         ###   ########.fr       */
+/*   Updated: 2026/03/24 17:15:26 by namatias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	monitoring_routine(t_info *info)
 			if (check_numb_of_meals(info) != 0)
 				stop_routine(info);
 		}
-		usleep(500); //da uma pausa entre um ciclo de verificaçao e outro, assim n frita nossa CPU
+		usleep(1000); //da uma pausa entre um ciclo de verificaçao e outro, assim n frita nossa CPU
 	}
 }
 
@@ -56,6 +56,7 @@ static int	check_death(t_philo *philo, t_info *info)
 	fast = current_time() - philo->last_meal_time;
 	if (fast >= info->time_to_die)
 	{
+		stop_routine(info);
 		//escrevemos no terminal a morte do philo
 		print_action(philo, 5);
 		//mudamos nossa flag para 1, assim todos saberao que é para encerrar a rotina
