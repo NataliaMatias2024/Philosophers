@@ -6,7 +6,7 @@
 /*   By: namatias <namatias@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/20 11:26:22 by namatias          #+#    #+#             */
-/*   Updated: 2026/03/23 22:40:50 by namatias         ###   ########.fr       */
+/*   Updated: 2026/03/24 00:56:53 by namatias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,22 @@ int	main(int argc, char **argv)
 
 void print_struct_teste(t_info *info)
 {
+	int i;
+
 	printf("Numero de filosofos: %ld\n", info->numb_of_philo);
-		printf("Tempo para morrer: %ld\n", info->time_to_die);
-			printf("Tempo para comer: %ld\n", info->time_to_eat);
-				printf("Tempo para dormir: %ld\n", info->time_to_sleep);
-					printf("Numero de refeições: %ld\n", info->numb_of_meals);
+	printf("Tempo para morrer: %ld\n", info->time_to_die);
+	printf("Tempo para comer: %ld\n", info->time_to_eat);
+	printf("Tempo para dormir: %ld\n", info->time_to_sleep);
+	printf("Numero de refeições: %ld\n", info->numb_of_meals);
+
+	if (info->numb_of_meals > 0)
+	{
+		i = 0;
+		while (i < info->numb_of_philo)
+		{
+			printf("O filósofo %ld comeu %ld refeições\n", info->philo[i].id, info->philo[i].meals);
+			i++;
+		}
+		
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: namatias <namatias@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/22 20:23:52 by namatias          #+#    #+#             */
-/*   Updated: 2026/03/23 16:29:29 by namatias         ###   ########.fr       */
+/*   Updated: 2026/03/24 00:56:58 by namatias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,16 @@ void	*routine(void *arg)
 	t_philo	*philo;
 
 	philo = (t_philo *)arg; //aqui informamos, "Oh! esse ponteiro genérico é uma struct do tipo t_philo"
+	if (philo->info->numb_of_philo == 1)
+	{
+		print_action(philo, 1);
+		usleep(philo->info->time_to_die);
+		return (NULL);
+	}
 	while (keep_running(philo->info) == 0) //enquanto ninguem morrer nem atingir o numero minimo de refeições 
-	{									  //n podemos comparar o info->stop direto com o zero pois	
-		thinking(philo);				 //temos q protege-lo de data race, por isso usamos uma funçao auxiliar
+	{									  //n podemos comparar o info->stop direto com o zero pois
+								        //temos q protege-lo de data race, por isso usamos uma funçao auxiliar
+		thinking(philo);
 		take_a_fork(philo);
 		eating(philo);
 		sleeping(philo);
@@ -37,20 +44,21 @@ static void	thinking(t_philo *philo)
 	if (keep_running(philo->info) == 0)
 	{
 		print_action(philo, 4);
-		//custom_usleep(100, philo->info); //como saber qual valor usar? //TODO: testar tempos diferentes e ver se ninguem morre
+		custom_usleep(5, philo->info); //esse mini delay ajuda as threads a n sincronizarem ao decorrer da simulaçao
+									//consequentemente nunca chegarao juntas na mesa, nem morrerao de inaniçao
 	}
 }
 
 static void take_a_fork(t_philo *philo)
 {
-	if (philo->id % 2 == 0 && keep_running(philo->info) == 0) //se for um philo com id par e ninguem tiver morrido
+	if (philo->id % 2 == 0) //se for um philo com id par e ninguem tiver morrido
 	{
 		pthread_mutex_lock(philo->right_fork);
 		print_action(philo, 1);
 		pthread_mutex_lock(philo->left_fork);
 		print_action(philo, 1);
 	}
-	else if (philo->id % 2 != 0 && keep_running(philo->info) == 0) //se for um philo com id impar e ninguem tiver morrido
+	else if (philo->id % 2 != 0) //se for um philo com id impar e ninguem tiver morrido
 	{
 		pthread_mutex_lock(philo->left_fork);
 		print_action(philo, 1);

@@ -6,7 +6,7 @@
 #    By: namatias <namatias@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/03/20 11:29:54 by namatias          #+#    #+#              #
-#    Updated: 2026/03/23 23:54:19 by namatias         ###   ########.fr        #
+#    Updated: 2026/03/24 00:57:01 by namatias         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,11 +25,11 @@ INCLUDE_DIR = 	./include/
 
 SRC_FILES = main.c \
 			time.c \
-			parse.c \
 			init.c \
-			clean.c  \
+			parse.c \
+			clean.c \
+			utils.c \
 			routine.c \
-			utils.c  \
 			threads.c \
 			monitoring.c
 

@@ -6,7 +6,7 @@
 /*   By: namatias <namatias@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/23 22:06:23 by namatias          #+#    #+#             */
-/*   Updated: 2026/03/23 23:41:17 by namatias         ###   ########.fr       */
+/*   Updated: 2026/03/24 00:56:56 by namatias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,10 @@ void	monitoring_routine(t_info *info)
 		while (i < info->numb_of_philo)
 		{
 			if (check_death(&info->philo[i], info) != 0)
+			{
 				stop_routine(info);
+				return ; //essa linha que garante que nada mais aparecerá no terminal após a primeira morte
+			}
 			i++;
 		}
 		//SE ninguem tiver morrido verificamos SE existe um n_minimo de refeiçoes p/ encerrar
