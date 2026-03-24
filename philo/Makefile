@@ -6,7 +6,7 @@
 #    By: namatias <namatias@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/03/20 11:29:54 by namatias          #+#    #+#              #
-#    Updated: 2026/03/23 16:41:30 by namatias         ###   ########.fr        #
+#    Updated: 2026/03/23 23:54:19 by namatias         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,8 @@ SRC_FILES = main.c \
 			clean.c  \
 			routine.c \
 			utils.c  \
-			threads.c
+			threads.c \
+			monitoring.c
 
 FILES_O = $(SRC_FILES:.c=.o)
 
@@ -38,7 +39,7 @@ OBJS = $(addprefix $(OBJ_DIR), $(FILES_O))
 SRCS = $(addprefix $(SRC_DIR), $(SRC_FILES))
 
 ARGS = 5 800 200 200 #Para compilar com a regra make val para projetos q devem receber argumentos pelo terminal
-                     #Esses valores sao substituidos ao se chamar make val ARG="1 200 200 200 200" por exemplo
+                     #Esses valores sao substituidos ao se chamar make val ARGS="1 200 200 200 200" por exemplo
 ################################################################################
 #                   	          LIBRARIES        		                       #
 ################################################################################

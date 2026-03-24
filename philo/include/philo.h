@@ -6,7 +6,7 @@
 /*   By: namatias <namatias@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 14:14:19 by namatias          #+#    #+#             */
-/*   Updated: 2026/03/23 20:56:44 by namatias         ###   ########.fr       */
+/*   Updated: 2026/03/23 23:36:06 by namatias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,6 @@ typedef struct	s_info
 
 	long long		time_start; //guarda o tempo de quando iniciamos o programa
 
-	pthread_t 		monitor; //criaremos um monitor para tds os philosofos, por isso chamamos ele apenas aqui
-
 	t_philo			philo[MAX_PHILOS]; //irá guardar os ids das threads de cada filosofo no seu respectivo index
 	pthread_mutex_t	forks[MAX_PHILOS]; //cria os garfos, 1 pra cada filosofovo, e os deixa disponivel p uso
 	pthread_mutex_t	write_lock; //garante q os filosos n se atropelem na hora q escrever oq estao fazndo (dormindo, comendo, pensando, etc....)
@@ -82,5 +80,7 @@ void		print_action(t_philo *philo, int action);
 
 void		threads_philo_create(t_info *info);
 void		thread_wait(t_info *info, int error_i);
+
+void		monitoring_routine(t_info *info);
 
 #endif
