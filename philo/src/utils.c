@@ -6,7 +6,7 @@
 /*   By: namatias <namatias@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/23 02:26:53 by namatias          #+#    #+#             */
-/*   Updated: 2026/03/23 02:29:35 by namatias         ###   ########.fr       */
+/*   Updated: 2026/03/25 12:44:58 by namatias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,16 @@ void	print_action(t_philo *philo, int action)
 		printf("%lld %ld %sis thinking%s\n", time, philo->id, GRAY, RESET);
 	else if (action == 5)
 		printf("%lld %ld %sdied%s\n", time, philo->id, RED, RESET);
+	//Para tester o ideal é estar exatamente igual o subject, sem cores e/ou emotes
+	// if (action == 1)
+	// 	printf("%lld %ld has taken a fork\n", time, philo->id);
+	// else if (action == 2)
+	// 	printf("%lld %ld is eating\n", time, philo->id);
+	// else if (action == 3)
+	// 	printf("%lld %ld is sleeping\n", time, philo->id);
+	// else if (action == 4)
+	// 	printf("%lld %ld is thinking\n", time, philo->id);
+	// else if (action == 5)
+	// 	printf("%lld %ld died\n", time, philo->id);
 	pthread_mutex_unlock(&philo->info->write_lock);
 }
